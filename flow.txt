@@ -1,0 +1,21 @@
+1. A new business is registered. ✓
+
+2. An application is submitted. ✓
+3. A bill for the inspection fee is generated (constant amount).
+4. Business pays the inspection fee. 
+5. Receipt is generated and shared.
+6. Inspection is done.
+7. Result of the inspection is updated.
+
+8. 
+a) If the inspection is a pass: 
+9. A license bill is generated.
+10. Business pays for the bill.
+11. Receipt is generated and shared.
+12. License is generated and shared.
+
+b) If the inspection is a fail:
+9. Business reapplies (go back to 2 above)
+
+13. License expires.
+14. Business reapplies (go back to 2 above)
