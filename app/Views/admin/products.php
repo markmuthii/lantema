@@ -18,7 +18,7 @@ require APPROOT . '/Views/inc/inner/header.php';
   </div>
 
   <div class="card">
-    <div class="card-body">
+    <div class="card-body table-responsive">
       <table id="products" class="table datatable table-striped dt-responsive nowrap" style="width:100%">
         <thead>
           <tr>

@@ -31,12 +31,6 @@ class Admin extends BaseController
 
     $products = $productModel->get_products();
 
-    // echo "<pre>";
-    // print_r($products);
-    // exit;
-    // echo "<pre>";
-
-
     return view("admin/products", ["products" => $products]);
   }
 

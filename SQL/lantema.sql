@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2022 at 07:13 AM
+-- Generation Time: Nov 18, 2022 at 08:05 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -130,7 +130,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `telephone`, `role`, `created_at`, `modified_at`) VALUES
-(1, 'Doreen', 'Kendi', 'daphk', '$2y$10$qK.C9Rw5MUQN8UjoBq5mVeoyqTIhORy4Z4/hCkkfjiRd3DMN6pp4G', 'daphk@gmail.com', '0712345678', 2, '2022-11-18 04:40:14', '2022-11-18 04:41:08');
+(1, 'Doreen', 'Kendi', 'daphk', '$2y$10$WbX162HPnjFOTuDEZTEzR.7c5SLVyeBAU2upo65zdi9o4/p2S3Klu', 'daphyk@gmail.com', '0712345678', 2, '2022-11-18 04:40:14', '2022-11-18 07:05:51');
 
 --
 -- Indexes for dumped tables
