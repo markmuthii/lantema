@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2022 at 05:54 AM
+-- Generation Time: Nov 18, 2022 at 07:13 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -54,6 +54,14 @@ CREATE TABLE `products` (
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `price`, `quantity`, `image_url`, `category_id`, `description`, `created_at`, `modified_at`) VALUES
+(1, 'Maize Flour', 250.00, 50, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id eleifend turpis. Nam pharetra mauris id feugiat venenatis. Cras pharetra dictum bibendum. Sed euismod arcu elit, eget interdum justo commodo eget. Phasellus rutrum rhoncus tortor. Nullam condimentum tellus diam, et convallis lorem vestibulum vitae. Integer quis turpis at sapien placerat viverra at sed ligula. Morbi rhoncus feugiat elit, nec dapibus metus porttitor et. Vestibulum nec purus lacinia, cursus ex sit amet, volutpat nisl.', '2022-11-18 05:50:46', '2022-11-18 06:03:35'),
+(2, 'Spinach', 20.00, 50, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png', 1, 'Ut ultricies, urna at cursus auctor, ex velit auctor magna, non maximus enim nulla eget lorem. Aliquam quis pellentesque risus, ut lacinia lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sodales augue vitae rhoncus gravida. Integer egestas eros id ante vehicula sollicitudin. Nulla luctus neque vitae tortor condimentum congue. Nulla ut aliquet magna. Sed quis metus lobortis, euismod ante at, tempor dolor. Praesent aliquam ligula eleifend, venenatis mauris vel, hendrerit neque.', '2022-11-18 05:50:46', '2022-11-18 06:03:35');
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +75,14 @@ CREATE TABLE `product_categories` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `name`, `description`, `created_at`, `modified_at`) VALUES
+(1, 'Vegetables', 'Veggies', '2022-11-18 05:51:13', '2022-11-18 05:51:13'),
+(2, 'Corn', 'Corn', '2022-11-18 05:51:30', '2022-11-18 05:51:30');
 
 -- --------------------------------------------------------
 
@@ -164,13 +180,13 @@ ALTER TABLE `discounts`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`

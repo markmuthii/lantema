@@ -1,6 +1,7 @@
 <?php
 
 $title = "Orders";
+$has_data_table = true;
 
 require APPROOT . '/Views/inc/inner/header.php';
 
@@ -11,6 +12,25 @@ require APPROOT . '/Views/inc/inner/header.php';
     <h1 class="h2"><?= $title; ?></h1>
   </div>
 
+  <div class="card">
+    <div class="card-body">
+      <table id="example" class="table table-striped dt-responsive nowrap" style="width:100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
 </main>
 
 <?php require APPROOT . '/Views/inc/inner/footer.php'; ?>

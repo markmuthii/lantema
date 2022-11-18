@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Libraries\Hash;
+use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
 
@@ -26,7 +27,17 @@ class Admin extends BaseController
 
   public function getProducts()
   {
-    return view("admin/products");
+    $productModel = new Product();
+
+    $products = $productModel->get_products();
+
+    // echo "<pre>";
+    // print_r($products);
+    // exit;
+    // echo "<pre>";
+
+
+    return view("admin/products", ["products" => $products]);
   }
 
   public function postAdd_users()
