@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
+  require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /*
@@ -35,13 +35,30 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// $routes->group("api", static function ($routes) {
+//   // $routes->group("admin", static function ($routes) {
+//   $routes->get("test", "API::api");
+//   // });
+// });
+
 $routes->get("/", "Home::getIndex");
 $routes->get("/login", "Home::getLogin");
+$routes->get("/register", "Home::getRegister");
 $routes->get("/forgotpass", "Home::getForgotpass");
 $routes->get("/resetpass", "Home::getResetpass");
 $routes->get("/logout", "Home::logout");
 
-$routes->post("login", "Home::postLogin");
+$routes->get("/checkout", "Shopping::getCheckout");
+$routes->post("/checkout", "Shopping::postCheckout");
+
+$routes->get("order/(:num)", "Shopping::orderDetails/$1");
+$routes->get("order/disburse/(:num)", "Shopping::disburseOrder/$1");
+$routes->get("order/deliver/(:num)", "Shopping::deliverOrder/$1");
+
+$routes->post("/login", "Home::postLogin");
+$routes->post("/register", "Home::postRegister");
+
+
 
 /*
  * --------------------------------------------------------------------
@@ -57,5 +74,5 @@ $routes->post("login", "Home::postLogin");
  * needing to reload it.
  */
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+  require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

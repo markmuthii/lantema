@@ -1,3 +1,32 @@
-#products img {
-  max-width: 50%;
+table img {
+  max-width: 20%;
 }
+
+/* .pagination {
+  display: inline-block;
+}
+
+.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination li.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination a {
+  color: black;
+  text-decoration: none;
+}
+
+.pagination li.active a {
+  color: white;
+} */

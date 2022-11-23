@@ -16,7 +16,7 @@ class PaymentMethods extends Seeder
       ],
       [
         "name" => "cash",
-        "description" => "Cash"
+        "description" => "Cash On Delivery"
       ],
     ];
 

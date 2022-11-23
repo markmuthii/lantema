@@ -49,8 +49,12 @@ class Product extends Model
 
   public function get_products()
   {
-    return $this->get()->getResult();
-    return $this->select("products.*, pc.name as category");
-    // ->join("product_categories pc", "products.category_id = pc.id");
+    return $this->select("products.*, pc.name as category")
+      ->join("product_categories pc", "products.category_id = pc.id");
+  }
+
+  public function get_total_products()
+  {
+    return $this->countAllResults();
   }
 }

@@ -11,7 +11,34 @@ require APPROOT . '/Views/inc/inner/header.php';
     <h1 class="h2"><?= $title; ?></h1>
   </div>
 
-  <h2>Section title</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h3>Customers</h3>
+          <h5><?= $customers ?></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h3>Products</h3>
+          <h5><?= $products; ?></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h3>Pending Orders</h3>
+          <h5><?= $orders; ?></h5>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
 <?php require APPROOT . '/Views/inc/inner/footer.php'; ?>

@@ -11,8 +11,6 @@ class DefaultSeeder extends Seeder
     // Call default seeds
     $this->call("Roles");
     $this->call("Users");
-    $this->call("Fees");
-    $this->call("Businesses");
     $this->call("PaymentMethods");
   }
 }

@@ -1,166 +1,67 @@
-<!doctype html>
-<html lang="en">
+<?php
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.104.2">
-  <title>Login - Lantema Groceries</title>
+$title = "Login";
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+require APPROOT . '/Views/inc/outer/header.php';
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    .b-example-divider {
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
-
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
-
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
-
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
-
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
-  </style>
-
-  <style>
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      display: flex;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
-    }
-
-    .form-signin {
-      max-width: 330px;
-      padding: 15px;
-    }
-
-    .form-signin .form-floating:focus-within {
-      z-index: 2;
-    }
-
-    .form-signin input[type="email"] {
-      margin-bottom: -1px;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-    .form-signin input[type="password"] {
-      margin-bottom: 10px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  </style>
-
-</head>
-
-<body class="text-center">
-
-  <main class="form-signin w-100 m-auto">
-    <!-- <form>
-      <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+?>
+<!-- Breadcrumb -->
+<div class="py-3 bg-gray-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 my-2">
+        <h1 class="m-0 h4 text-center text-lg-start"><?= $title ?></h1>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumb -->
+<!-- login page -->
+<div class="section">
+  <div class="container">
+    <div class="justify-content-center row">
+      <div class="col-lg-5 col-xxl-4">
+        <div class="card">
+          <div class="card-body">
+            <?php if (!empty(session()->getFlashdata("login_error"))) : ?>
+              <div class="alert alert-danger"><?= session()->getFlashdata("login_error"); ?></div>
+            <?php elseif (!empty(session()->getFlashdata("login_success"))) : ?>
+              <div class="alert alert-success"><?= session()->getFlashdata("login_success"); ?></div>
+            <?php endif; ?>
+
+            <!-- Form -->
+            <form action="<?= base_url('login'); ?>" method="post">
+              <?= csrf_field(); ?>
+
+              <!-- Email address -->
+              <div class="form-floating mb-3">
+                <!-- Label -->
+                <!-- Input -->
+                <input type="email" name="email" class="form-control <?= isset($validation) && isset($validation->getErrors()['email']) ? 'is-invalid' : ''; ?>" placeholder="Enter email..." value="<?= set_value('email'); ?>">
+                <label for="email">Email <sup>*</sup></label>
+                <span class="invalid-feedback"><?= isset($validation) ? display_error($validation, 'email') : ''; ?></span>
+              </div>
+
+              <!-- Password -->
+              <div class="form-floating mb-3">
+                <!-- Label -->
+                <!-- Input -->
+                <input id="password" name="password" class="form-control <?= isset($validation) && isset($validation->getErrors()['password']) ? 'is-invalid' : ''; ?>" type="password" placeholder="Enter your password" value="<?= set_value('password'); ?>">
+                <label for="password">Password <sup>*</sup></label>
+                <span class="invalid-feedback"><?= isset($validation) ? display_error($validation, 'password') : ''; ?></span>
+              </div>
+
+              <!-- Submit -->
+              <input type="submit" class="btn btn-lg w-100 btn-primary mb-3" value="Login">
+
+            </form>
+            <div class="pt-4 text-center"><span class="text-muted">Don't have an account? <a href="<?= base_url('register') ?>">Signup here</a></span></div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
+<!-- end login -->
 
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-    </form> -->
-
-    <?php if (!empty(session()->getFlashdata("login_error"))) : ?>
-      <div class="alert alert-danger"><?= session()->getFlashdata("login_error"); ?></div>
-    <?php elseif (!empty(session()->getFlashdata("login_success"))) : ?>
-      <div class="alert alert-success"><?= session()->getFlashdata("login_success"); ?></div>
-    <?php endif; ?>
-
-    <!-- Form -->
-    <form action="<?= base_url('login'); ?>" method="post">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-      <?= csrf_field(); ?>
-
-      <!-- Email address -->
-      <div class="form-floating">
-        <!-- Label -->
-        <!-- Input -->
-        <input type="email" name="email" class="form-control <?= isset($validation) && isset($validation->getErrors()['email']) ? 'is-invalid' : ''; ?>" placeholder="Enter email..." value="<?= set_value('email'); ?>">
-        <label for="email">Email <sup>*</sup></label>
-        <span class="invalid-feedback"><?= isset($validation) ? display_error($validation, 'email') : ''; ?></span>
-      </div>
-
-      <!-- Password -->
-      <div class="form-floating">
-        <!-- Label -->
-        <!-- Input -->
-        <input id="password" name="password" class="form-control <?= isset($validation) && isset($validation->getErrors()['password']) ? 'is-invalid' : ''; ?>" type="password" placeholder="Enter your password" value="<?= set_value('password'); ?>">
-        <label for="password">Password <sup>*</sup></label>
-        <span class="invalid-feedback"><?= isset($validation) ? display_error($validation, 'password') : ''; ?></span>
-      </div>
-
-      <!-- Submit -->
-      <input type="submit" class="btn btn-lg w-100 btn-primary mb-3" value="Login">
-
-    </form>
-  </main>
-</body>
-
-</html>
+<?php require APPROOT . '/Views/inc/outer/footer.php'; ?>

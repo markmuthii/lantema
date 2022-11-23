@@ -14,7 +14,7 @@ class User extends Model
   protected $returnType       = 'array';
   protected $useSoftDeletes   = false;
   protected $protectFields    = true;
-  protected $allowedFields    = ['first_name', 'last_name', 'email', 'password', 'role', 'added_by'];
+  protected $allowedFields    = ['first_name', 'last_name', 'email', 'password', 'role', 'added_by', 'username', 'telephone'];
 
   // Dates
   protected $useTimestamps = false;
@@ -60,5 +60,15 @@ class User extends Model
   public function get_all_users()
   {
     return $this->get()->getResult();
+  }
+
+  public function get_total_customers()
+  {
+    return $this->where("role", 1)->countAllResults();
+  }
+
+  public function get_random_agent()
+  {
+    return $this->where("role", 3)->orderBy("id", "random")->limit(1)->get()->getResult();
   }
 }
