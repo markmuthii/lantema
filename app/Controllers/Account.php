@@ -23,7 +23,7 @@ class Account extends BaseController
   {
     $orderModel = new Order();
 
-    $orders = $orderModel->paginate(10);
+    $orders = $orderModel->where("user_id", get_user_info("id"))->paginate(10);
 
     $data = [
       "orders" => $orders,
